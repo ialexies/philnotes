@@ -1,4 +1,5 @@
  import 'package:flutter/material.dart';
+ import 'package:google_sign_in/google_sign_in.dart';
 
 
 void main()=>runApp(MyApp());
@@ -9,13 +10,26 @@ void main()=>runApp(MyApp());
  }
  
  class _MyAppState extends State<MyApp> {
-   bool _isLoggedIn = false;
+  bool _isLoggedIn = false;
    
-   _login() async{
+  //  Initialize a variable for googlesignin 
+  GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ['email']);
 
+   _login() async{
+     try {
+       await _googleSignIn.signIn();
+       setState(() {
+         _isLoggedIn=true;
+       });
+       
+     }
+     catch(err) {
+       print(err);
+     }
    }
 
-   _logut() {
+   _logout() {
+     _googleSignIn.signOut();
      setState(() {
       _isLoggedIn=false; 
      });
@@ -27,7 +41,32 @@ void main()=>runApp(MyApp());
        home: Scaffold(
          body: Center(
            child: _isLoggedIn
-           ? Column(),
+           ? Column(
+             mainAxisAlignment: MainAxisAlignment.center,
+             children: <Widget>[
+               Image.network(
+                 _googleSignIn.currentUser.photoUrl,
+                 height: 50,
+                 width: 50,),
+                 Text(_googleSignIn.currentUser.displayName ),
+                 Text(_googleSignIn.currentUser.email),
+                 Text(_googleSignIn.currentUser.id),
+
+                 OutlineButton(
+                   child: Text("Logout"),
+                   onPressed: (){
+                     _logout();
+                   },
+                 ),
+               
+             ],
+           )
+            : OutlineButton(
+                child: Text("Login with Google"),
+                  onPressed: (){
+                    _login();
+                  },
+              ),
          ),
        )
      );

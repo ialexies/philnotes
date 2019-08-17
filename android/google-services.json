@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "28009518286",
+    "firebase_url": "https://philnotes-8b520.firebaseio.com",
+    "project_id": "philnotes-8b520",
+    "storage_bucket": "philnotes-8b520.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:28009518286:android:1ecd43e54eaf116c",
+        "android_client_info": {
+          "package_name": "com.ialexies.philnotes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "28009518286-i49pq6191jor1lcd3p1kpcqmkta25gst.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ialexies.philnotes",
+            "certificate_hash": "8058e40474ee6ad8b5aca43dc0f8be3ac12f23f2"
+          }
+        },
+        {
+          "client_id": "28009518286-jqg5ohjmmvdeftitk790koahbed14ash.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCx8ggVg6nrMhaOEclMT3LCWfCOatygSKA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "28009518286-jqg5ohjmmvdeftitk790koahbed14ash.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
