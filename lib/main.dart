@@ -1,5 +1,8 @@
  import 'package:flutter/material.dart';
  import 'package:google_sign_in/google_sign_in.dart';
+//  import 'packaged:route';
+ import './home.dart';
+
 
 
 void main()=>runApp(MyApp());
@@ -20,9 +23,13 @@ void main()=>runApp(MyApp());
        await _googleSignIn.signIn();
        setState(() {
          _isLoggedIn=true;
+        	 
        });
-       
-     }
+
+			 	Navigator.push(context, MaterialPageRoute(builder: (context){
+           return Home();
+         }));
+     		}
      catch(err) {
        print(err);
      }
@@ -38,35 +45,51 @@ void main()=>runApp(MyApp());
    @override
    Widget build(BuildContext context) {
      return MaterialApp(
+      
+    
+
        home: Scaffold(
          body: Center(
            child: _isLoggedIn
-           ? Column(
-             mainAxisAlignment: MainAxisAlignment.center,
-             children: <Widget>[
-               Image.network(
-                 _googleSignIn.currentUser.photoUrl,
-                 height: 50,
-                 width: 50,),
-                 Text(_googleSignIn.currentUser.displayName ),
-                 Text(_googleSignIn.currentUser.email),
-                 Text(_googleSignIn.currentUser.id),
+           ? 
+					//  Column(
+          //    mainAxisAlignment: MainAxisAlignment.center,
+          //    children: <Widget>[
+          //      Image.network(
+          //        _googleSignIn.currentUser.photoUrl,
+          //        height: 50,
+          //        width: 50,),
+          //        Text(_googleSignIn.currentUser.displayName ),
+          //        Text(_googleSignIn.currentUser.email),
+          //        Text(_googleSignIn.currentUser.id),
 
-                 OutlineButton(
-                   child: Text("Logout"),
-                   onPressed: (){
-                     _logout();
-                   },
-                 ),
+          //        OutlineButton(
+          //          child: Text("Logout"),
+          //          onPressed: (){
+          //            _logout();
+          //          },
+          //        ),
                
-             ],
-           )
-            : OutlineButton(
-                child: Text("Login with Google"),
-                  onPressed: (){
-                    _login();
-                  },
-              ),
+          //    ],
+          //  )
+           
+					 	Home()
+					  : Column(
+							mainAxisAlignment:MainAxisAlignment.center,
+							children: <Widget>[
+								Image(
+									image: AssetImage(
+										'images/google.png'
+									),
+								),
+								OutlineButton(
+									child: Text("Login with Google"),
+										onPressed: (){
+											_login();
+										},
+              	),
+							],
+						),
          ),
        )
      );
